@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ready Set Code</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+  <h1>Latihan Javascript DOM</h1>
+  <hr>
+  <p>Type number 1 <input id="input1"></p>
+  <p>Type number 2 <input id="input2"></p>
+  <button id="submit">submit</button>
+  <div id="result"></div>
+  <script>
+    const input1 = document.getElementById("input1")
+    const input2 = document.getElementById("input2")
+    const submit = document.getElementById("submit")
+
+    submit.addEventListener("click", () => {
+      const result = document.getElementById("result")
+      const text = document.createElement("p")
+
+      if (isNaN(input1.value)) {
+        alert(`input ${input1.value} is not number`)
+        return
+      }
+
+      if (isNaN(input2.value)) {
+        alert(`input ${input2.value} is not number`)
+        return
+      }
+
+      if (Number(input1.value) === 0 || Number(input2.value) === 0) {
+        alert(`you can't input 0`)
+        return
+      }
+
+      const sum = Number(input1.value) + Number(input2.value)
+      let resultText = ""
+
+      if (sum % 3 == 0 && sum % 5 == 0) {
+        resultText = `Fizzbuzz = ${input1.value} + ${input2.value}`
+      } else if (sum % 3 == 0) {
+        resultText = `Fizz = ${input1.value} + ${input2.value}`
+      } else if (sum % 5 == 0) {
+        resultText = `Buzz = ${input1.value} + ${input2.value}`
+      } else {
+        resultText = `${sum} = ${input1.value} + ${input2.value}`
+      }
+
+      text.innerHTML = resultText
+      result.appendChild(text)
+    })
+  </script>
+
+</body>
+
+</html>
